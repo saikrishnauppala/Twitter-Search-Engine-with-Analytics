@@ -1,0 +1,1295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solr managed schema - automatically generated - DO NOT EDIT -->
+<schema name="example-data-driven-schema" version="1.6">
+  <uniqueKey>id</uniqueKey>
+  <fieldType name="ancestor_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="binary" class="solr.BinaryField"/>
+  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="booleans" class="solr.BoolField" sortMissingLast="true" multiValued="true"/>
+  <fieldType name="currency" class="solr.CurrencyField" currencyConfig="currency.xml" defaultCurrency="USD" precisionStep="8"/>
+  <fieldType name="date" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="dates" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="0"/>
+  <fieldType name="delimited_payloads_float" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="float"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="delimited_payloads_int" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="integer"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="delimited_payloads_string" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="identity"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="descendent_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="double" class="solr.TrieDoubleField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="doubles" class="solr.TrieDoubleField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="0"/>
+  <fieldType name="float" class="solr.TrieFloatField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="floats" class="solr.TrieFloatField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="0"/>
+  <fieldType name="ignored" class="solr.StrField" indexed="false" stored="false" docValues="false" multiValued="true"/>
+  <fieldType name="int" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="ints" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="0"/>
+  <fieldType name="location" class="solr.LatLonPointSpatialField" docValues="true"/>
+  <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
+  <fieldType name="long" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="longs" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="0"/>
+  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="pdate" class="solr.DatePointField" docValues="true"/>
+  <fieldType name="pdates" class="solr.DatePointField" docValues="true" multiValued="true"/>
+  <fieldType name="pdouble" class="solr.DoublePointField" docValues="true"/>
+  <fieldType name="pdoubles" class="solr.DoublePointField" docValues="true" multiValued="true"/>
+  <fieldType name="pfloat" class="solr.FloatPointField" docValues="true"/>
+  <fieldType name="pfloats" class="solr.FloatPointField" docValues="true" multiValued="true"/>
+  <fieldType name="phonetic_en" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.DoubleMetaphoneFilterFactory" inject="false"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="pint" class="solr.IntPointField" docValues="true"/>
+  <fieldType name="pints" class="solr.IntPointField" docValues="true" multiValued="true"/>
+  <fieldType name="plong" class="solr.LongPointField" docValues="true"/>
+  <fieldType name="plongs" class="solr.LongPointField" docValues="true" multiValued="true"/>
+  <fieldType name="point" class="solr.PointType" subFieldSuffix="_d" dimension="2"/>
+  <fieldType name="random" class="solr.RandomSortField" indexed="true"/>
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+  <fieldType name="strings" class="solr.StrField" sortMissingLast="true" docValues="true" multiValued="true"/>
+  <fieldType name="tdate" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" precisionStep="6"/>
+  <fieldType name="tdates" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="6"/>
+  <fieldType name="tdouble" class="solr.TrieDoubleField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+  <fieldType name="tdoubles" class="solr.TrieDoubleField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <fieldType name="text_ar" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ar.txt" ignoreCase="true"/>
+      <filter class="solr.ArabicNormalizationFilterFactory"/>
+      <filter class="solr.ArabicStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_bg" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_bg.txt" ignoreCase="true"/>
+      <filter class="solr.BulgarianStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ca" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_ca.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ca.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Catalan"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_cjk" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.CJKWidthFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.CJKBigramFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_cz" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_cz.txt" ignoreCase="true"/>
+      <filter class="solr.CzechStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_da" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_da.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Danish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_de" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_de.txt" ignoreCase="true"/>
+      <filter class="solr.GermanNormalizationFilterFactory"/>
+      <filter class="solr.GermanLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_el" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.GreekLowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_el.txt" ignoreCase="false"/>
+      <filter class="solr.GreekStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords_en.txt" ignoreCase="true"/>
+	  <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+	  <filter class="solr.patternReplaceFIlterFactory" patterns="([^a-z])" replacement="" replace="all">
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_en_splitting" class="solr.TextField" autoGeneratePhraseQueries="true" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="1" splitOnCaseChange="1" generateWordParts="1" catenateAll="0" catenateWords="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+      <filter class="solr.FlattenGraphFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" splitOnCaseChange="1" generateWordParts="1" catenateAll="0" catenateWords="0"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_en_splitting_tight" class="solr.TextField" autoGeneratePhraseQueries="true" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="false" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="0" generateWordParts="0" catenateAll="0" catenateWords="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      <filter class="solr.FlattenGraphFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="false" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="0" generateWordParts="0" catenateAll="0" catenateWords="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_es" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_es.txt" ignoreCase="true"/>
+      <filter class="solr.SpanishLightStemFilterFactory"/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="^#(\w+)" replacement=""/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="^@(\w+)" replacement=""/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|[\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|[\ud83c[\ude32-\ude3a]|[\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])" replacement=""/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_eu" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_eu.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Basque"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_fa" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <charFilter class="solr.PersianCharFilterFactory"/>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ArabicNormalizationFilterFactory"/>
+      <filter class="solr.PersianNormalizationFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_fa.txt" ignoreCase="true"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_fi" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_fi.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Finnish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_fr" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_fr.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_fr.txt" ignoreCase="true"/>
+      <filter class="solr.FrenchLightStemFilterFactory"/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="^#(\w+)" replacement=""/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="^@(\w+)" replacement=""/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|[\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|[\ud83c[\ude32-\ude3a]|[\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])" replacement=""/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ga" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_ga.txt" ignoreCase="true"/>
+      <filter class="solr.StopFilterFactory" words="lang/hyphenations_ga.txt" ignoreCase="true"/>
+      <filter class="solr.IrishLowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ga.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Irish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_general_rev" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ReversedWildcardFilterFactory" maxPosQuestion="2" maxFractionAsterisk="0.33" maxPosAsterisk="3" withOriginal="true"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_gl" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_gl.txt" ignoreCase="true"/>
+      <filter class="solr.GalicianStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_hi" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.IndicNormalizationFilterFactory"/>
+      <filter class="solr.HindiNormalizationFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_hi.txt" ignoreCase="true"/>
+      <filter class="solr.HindiStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_hu" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_hu.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Hungarian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_hy" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_hy.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Armenian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_id" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_id.txt" ignoreCase="true"/>
+      <filter class="solr.IndonesianStemFilterFactory" stemDerivational="true"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_it" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_it.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_it.txt" ignoreCase="true"/>
+      <filter class="solr.ItalianLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ja" class="solr.TextField" autoGeneratePhraseQueries="false" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.JapaneseTokenizerFactory" mode="search"/>
+      <filter class="solr.JapaneseBaseFormFilterFactory"/>
+      <filter class="solr.JapanesePartOfSpeechStopFilterFactory" tags="lang/stoptags_ja.txt"/>
+      <filter class="solr.CJKWidthFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ja.txt" ignoreCase="true"/>
+      <filter class="solr.JapaneseKatakanaStemFilterFactory" minimumLength="4"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_lv" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_lv.txt" ignoreCase="true"/>
+      <filter class="solr.LatvianStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_nl" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_nl.txt" ignoreCase="true"/>
+      <filter class="solr.StemmerOverrideFilterFactory" dictionary="lang/stemdict_nl.txt" ignoreCase="false"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Dutch"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_no" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_no.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Norwegian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_pt" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_pt.txt" ignoreCase="true"/>
+      <filter class="solr.PortugueseLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ro" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ro.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Romanian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ru" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_ru.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Russian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_sv" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_sv.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Swedish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_th" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.ThaiTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_th.txt" ignoreCase="true"/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="^#(\w+)" replacement=""/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="^@(\w+)" replacement=""/>
+	  <filter class="solr.PatternReplaceFilterFactory" pattern="(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|[\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|[\ud83c[\ude32-\ude3a]|[\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])" replacement=""/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_tr" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.TurkishLowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_tr.txt" ignoreCase="false"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Turkish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="tfloat" class="solr.TrieFloatField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+  <fieldType name="tfloats" class="solr.TrieFloatField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <fieldType name="tint" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+  <fieldType name="tints" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <fieldType name="tlong" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+  <fieldType name="tlongs" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
+  <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
+  <field name="_version_" type="long" indexed="false" stored="false"/>
+  <field name="content_encoding" type="strings"/>
+  <field name="content_type" type="strings"/>
+  <field name="coordinates.coordinates" type="tdoubles"/>
+  <field name="coordinates.type" type="strings"/>
+  <field name="created_at" type="strings"/>
+  <field name="display_text_range" type="tlongs"/>
+  <field name="entities.hashtags.indices" type="tlongs"/>
+  <field name="entities.hashtags.text" type="strings"/>
+  <field name="entities.media.display_url" type="strings"/>
+  <field name="entities.media.expanded_url" type="strings"/>
+  <field name="entities.media.id" type="tlongs"/>
+  <field name="entities.media.id_str" type="tlongs"/>
+  <field name="entities.media.indices" type="tlongs"/>
+  <field name="entities.media.media_url" type="strings"/>
+  <field name="entities.media.media_url_https" type="strings"/>
+  <field name="entities.media.sizes.large.h" type="tlongs"/>
+  <field name="entities.media.sizes.large.resize" type="strings"/>
+  <field name="entities.media.sizes.large.w" type="tlongs"/>
+  <field name="entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="entities.media.sizes.medium.resize" type="strings"/>
+  <field name="entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="entities.media.sizes.small.h" type="tlongs"/>
+  <field name="entities.media.sizes.small.resize" type="strings"/>
+  <field name="entities.media.sizes.small.w" type="tlongs"/>
+  <field name="entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="entities.media.source_status_id" type="tlongs"/>
+  <field name="entities.media.source_status_id_str" type="tlongs"/>
+  <field name="entities.media.source_user_id" type="tlongs"/>
+  <field name="entities.media.source_user_id_str" type="tlongs"/>
+  <field name="entities.media.type" type="strings"/>
+  <field name="entities.media.url" type="strings"/>
+  <field name="entities.urls.display_url" type="strings"/>
+  <field name="entities.urls.expanded_url" type="strings"/>
+  <field name="entities.urls.indices" type="tlongs"/>
+  <field name="entities.urls.url" type="strings"/>
+  <field name="entities.user_mentions.id" type="tlongs"/>
+  <field name="entities.user_mentions.id_str" type="tlongs"/>
+  <field name="entities.user_mentions.indices" type="tlongs"/>
+  <field name="entities.user_mentions.name" type="strings"/>
+  <field name="entities.user_mentions.screen_name" type="strings"/>
+  <field name="extended_entities.media.display_url" type="strings"/>
+  <field name="extended_entities.media.expanded_url" type="strings"/>
+  <field name="extended_entities.media.id" type="tlongs"/>
+  <field name="extended_entities.media.id_str" type="tlongs"/>
+  <field name="extended_entities.media.indices" type="tlongs"/>
+  <field name="extended_entities.media.media_url" type="strings"/>
+  <field name="extended_entities.media.media_url_https" type="strings"/>
+  <field name="extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="extended_entities.media.source_status_id" type="tlongs"/>
+  <field name="extended_entities.media.source_status_id_str" type="tlongs"/>
+  <field name="extended_entities.media.source_user_id" type="tlongs"/>
+  <field name="extended_entities.media.source_user_id_str" type="tlongs"/>
+  <field name="extended_entities.media.type" type="strings"/>
+  <field name="extended_entities.media.url" type="strings"/>
+  <field name="extended_tweet.display_text_range" type="tlongs"/>
+  <field name="extended_tweet.entities.hashtags.indices" type="tlongs"/>
+  <field name="extended_tweet.entities.hashtags.text" type="strings"/>
+  <field name="extended_tweet.entities.media.display_url" type="strings"/>
+  <field name="extended_tweet.entities.media.expanded_url" type="strings"/>
+  <field name="extended_tweet.entities.media.id" type="tlongs"/>
+  <field name="extended_tweet.entities.media.id_str" type="tlongs"/>
+  <field name="extended_tweet.entities.media.indices" type="tlongs"/>
+  <field name="extended_tweet.entities.media.media_url" type="strings"/>
+  <field name="extended_tweet.entities.media.media_url_https" type="strings"/>
+  <field name="extended_tweet.entities.media.sizes.large.h" type="tlongs"/>
+  <field name="extended_tweet.entities.media.sizes.large.resize" type="strings"/>
+  <field name="extended_tweet.entities.media.sizes.large.w" type="tlongs"/>
+  <field name="extended_tweet.entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="extended_tweet.entities.media.sizes.medium.resize" type="strings"/>
+  <field name="extended_tweet.entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="extended_tweet.entities.media.sizes.small.h" type="tlongs"/>
+  <field name="extended_tweet.entities.media.sizes.small.resize" type="strings"/>
+  <field name="extended_tweet.entities.media.sizes.small.w" type="tlongs"/>
+  <field name="extended_tweet.entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="extended_tweet.entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="extended_tweet.entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="extended_tweet.entities.media.type" type="strings"/>
+  <field name="extended_tweet.entities.media.url" type="strings"/>
+  <field name="extended_tweet.entities.urls.display_url" type="strings"/>
+  <field name="extended_tweet.entities.urls.expanded_url" type="strings"/>
+  <field name="extended_tweet.entities.urls.indices" type="tlongs"/>
+  <field name="extended_tweet.entities.urls.url" type="strings"/>
+  <field name="extended_tweet.entities.user_mentions.id" type="tlongs"/>
+  <field name="extended_tweet.entities.user_mentions.id_str" type="tlongs"/>
+  <field name="extended_tweet.entities.user_mentions.indices" type="tlongs"/>
+  <field name="extended_tweet.entities.user_mentions.name" type="strings"/>
+  <field name="extended_tweet.entities.user_mentions.screen_name" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.display_url" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.expanded_url" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.id" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.id_str" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.indices" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.media_url" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.media_url_https" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="extended_tweet.extended_entities.media.type" type="strings"/>
+  <field name="extended_tweet.extended_entities.media.url" type="strings"/>
+  <field name="extended_tweet.full_text" type="strings"/>
+  <field name="favorite_count" type="tlongs"/>
+  <field name="favorited" type="booleans"/>
+  <field name="filter_level" type="strings"/>
+  <field name="full_text" type="strings"/>
+  <field name="geo.coordinates" type="tdoubles"/>
+  <field name="geo.type" type="strings"/>
+  ` type="string" multiValued="false" indexed="true" required="true" stored="true"/>
+  <field name="id_str" type="tlongs"/>
+  <field name="in_reply_to_screen_name" type="strings"/>
+  <field name="in_reply_to_status_id" type="tlongs"/>
+  <field name="in_reply_to_status_id_str" type="tlongs"/>
+  <field name="in_reply_to_user_id" type="tlongs"/>
+  <field name="in_reply_to_user_id_str" type="tlongs"/>
+  <field name="is_quote_status" type="booleans"/>
+  <field name="lang" type="strings"/>
+  <field name="metadata.iso_language_code" type="strings"/>
+  <field name="metadata.result_type" type="strings"/>
+  <field name="place.bounding_box.coordinates" type="strings"/>
+  <field name="place.bounding_box.type" type="strings"/>
+  <field name="place.country" type="strings"/>
+  <field name="place.country_code" type="strings"/>
+  <field name="place.full_name" type="strings"/>
+  <field name="place.id" type="strings"/>
+  <field name="place.name" type="strings"/>
+  <field name="place.place_type" type="strings"/>
+  <field name="place.url" type="strings"/>
+  <field name="possibly_sensitive" type="booleans"/>
+  <field name="quote_count" type="tlongs"/>
+  <field name="quoted_status.created_at" type="strings"/>
+  <field name="quoted_status.display_text_range" type="tlongs"/>
+  <field name="quoted_status.entities.media.additional_media_info.monetizable" type="booleans"/>
+  <field name="quoted_status.entities.media.display_url" type="strings"/>
+  <field name="quoted_status.entities.media.expanded_url" type="strings"/>
+  <field name="quoted_status.entities.media.id" type="tlongs"/>
+  <field name="quoted_status.entities.media.id_str" type="tlongs"/>
+  <field name="quoted_status.entities.media.indices" type="tlongs"/>
+  <field name="quoted_status.entities.media.media_url" type="strings"/>
+  <field name="quoted_status.entities.media.media_url_https" type="strings"/>
+  <field name="quoted_status.entities.media.sizes.large.h" type="tlongs"/>
+  <field name="quoted_status.entities.media.sizes.large.resize" type="strings"/>
+  <field name="quoted_status.entities.media.sizes.large.w" type="tlongs"/>
+  <field name="quoted_status.entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="quoted_status.entities.media.sizes.medium.resize" type="strings"/>
+  <field name="quoted_status.entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="quoted_status.entities.media.sizes.small.h" type="tlongs"/>
+  <field name="quoted_status.entities.media.sizes.small.resize" type="strings"/>
+  <field name="quoted_status.entities.media.sizes.small.w" type="tlongs"/>
+  <field name="quoted_status.entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="quoted_status.entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="quoted_status.entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="quoted_status.entities.media.type" type="strings"/>
+  <field name="quoted_status.entities.media.url" type="strings"/>
+  <field name="quoted_status.entities.urls.display_url" type="strings"/>
+  <field name="quoted_status.entities.urls.expanded_url" type="strings"/>
+  <field name="quoted_status.entities.urls.indices" type="tlongs"/>
+  <field name="quoted_status.entities.urls.url" type="strings"/>
+  <field name="quoted_status.entities.user_mentions.id" type="tlongs"/>
+  <field name="quoted_status.entities.user_mentions.id_str" type="tlongs"/>
+  <field name="quoted_status.entities.user_mentions.indices" type="tlongs"/>
+  <field name="quoted_status.entities.user_mentions.name" type="strings"/>
+  <field name="quoted_status.entities.user_mentions.screen_name" type="strings"/>
+  <field name="quoted_status.extended_entities.media.additional_media_info.monetizable" type="booleans"/>
+  <field name="quoted_status.extended_entities.media.display_url" type="strings"/>
+  <field name="quoted_status.extended_entities.media.expanded_url" type="strings"/>
+  <field name="quoted_status.extended_entities.media.id" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.id_str" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.indices" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.media_url" type="strings"/>
+  <field name="quoted_status.extended_entities.media.media_url_https" type="strings"/>
+  <field name="quoted_status.extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="quoted_status.extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="quoted_status.extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="quoted_status.extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="quoted_status.extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.type" type="strings"/>
+  <field name="quoted_status.extended_entities.media.url" type="strings"/>
+  <field name="quoted_status.extended_entities.media.video_info.aspect_ratio" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.video_info.duration_millis" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.video_info.variants.bitrate" type="tlongs"/>
+  <field name="quoted_status.extended_entities.media.video_info.variants.content_type" type="strings"/>
+  <field name="quoted_status.extended_entities.media.video_info.variants.url" type="strings"/>
+  <field name="quoted_status.extended_tweet.display_text_range" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.hashtags.indices" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.hashtags.text" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.display_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.expanded_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.id" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.id_str" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.indices" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.media_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.media_url_https" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.large.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.large.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.large.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.medium.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.small.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.small.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.small.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.media.type" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.media.url" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.urls.display_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.urls.expanded_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.urls.indices" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.urls.url" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.user_mentions.id" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.user_mentions.id_str" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.user_mentions.indices" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.entities.user_mentions.name" type="strings"/>
+  <field name="quoted_status.extended_tweet.entities.user_mentions.screen_name" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.display_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.expanded_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.id" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.id_str" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.indices" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.media_url" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.media_url_https" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.type" type="strings"/>
+  <field name="quoted_status.extended_tweet.extended_entities.media.url" type="strings"/>
+  <field name="quoted_status.extended_tweet.full_text" type="strings"/>
+  <field name="quoted_status.favorite_count" type="tlongs"/>
+  <field name="quoted_status.favorited" type="booleans"/>
+  <field name="quoted_status.filter_level" type="strings"/>
+  <field name="quoted_status.id" type="tlongs"/>
+  <field name="quoted_status.id_str" type="tlongs"/>
+  <field name="quoted_status.is_quote_status" type="booleans"/>
+  <field name="quoted_status.lang" type="strings"/>
+  <field name="quoted_status.possibly_sensitive" type="booleans"/>
+  <field name="quoted_status.quote_count" type="tlongs"/>
+  <field name="quoted_status.quoted_status_id" type="tlongs"/>
+  <field name="quoted_status.quoted_status_id_str" type="tlongs"/>
+  <field name="quoted_status.reply_count" type="tlongs"/>
+  <field name="quoted_status.retweet_count" type="tlongs"/>
+  <field name="quoted_status.retweeted" type="booleans"/>
+  <field name="quoted_status.source" type="strings"/>
+  <field name="quoted_status.text" type="strings"/>
+  <field name="quoted_status.truncated" type="booleans"/>
+  <field name="quoted_status.user.contributors_enabled" type="booleans"/>
+  <field name="quoted_status.user.created_at" type="strings"/>
+  <field name="quoted_status.user.default_profile" type="booleans"/>
+  <field name="quoted_status.user.default_profile_image" type="booleans"/>
+  <field name="quoted_status.user.description" type="strings"/>
+  <field name="quoted_status.user.favourites_count" type="tlongs"/>
+  <field name="quoted_status.user.followers_count" type="tlongs"/>
+  <field name="quoted_status.user.friends_count" type="tlongs"/>
+  <field name="quoted_status.user.geo_enabled" type="booleans"/>
+  <field name="quoted_status.user.id" type="tlongs"/>
+  <field name="quoted_status.user.id_str" type="tlongs"/>
+  <field name="quoted_status.user.is_translator" type="booleans"/>
+  <field name="quoted_status.user.lang" type="strings"/>
+  <field name="quoted_status.user.listed_count" type="tlongs"/>
+  <field name="quoted_status.user.location" type="strings"/>
+  <field name="quoted_status.user.name" type="strings"/>
+  <field name="quoted_status.user.profile_background_color" type="strings"/>
+  <field name="quoted_status.user.profile_background_image_url" type="strings"/>
+  <field name="quoted_status.user.profile_background_image_url_https" type="strings"/>
+  <field name="quoted_status.user.profile_background_tile" type="booleans"/>
+  <field name="quoted_status.user.profile_banner_url" type="strings"/>
+  <field name="quoted_status.user.profile_image_url" type="strings"/>
+  <field name="quoted_status.user.profile_image_url_https" type="strings"/>
+  <field name="quoted_status.user.profile_link_color" type="strings"/>
+  <field name="quoted_status.user.profile_sidebar_border_color" type="strings"/>
+  <field name="quoted_status.user.profile_sidebar_fill_color" type="strings"/>
+  <field name="quoted_status.user.profile_text_color" type="strings"/>
+  <field name="quoted_status.user.profile_use_background_image" type="booleans"/>
+  <field name="quoted_status.user.protected" type="booleans"/>
+  <field name="quoted_status.user.screen_name" type="strings"/>
+  <field name="quoted_status.user.statuses_count" type="tlongs"/>
+  <field name="quoted_status.user.translator_type" type="strings"/>
+  <field name="quoted_status.user.url" type="strings"/>
+  <field name="quoted_status.user.verified" type="booleans"/>
+  <field name="quoted_status_id" type="tlongs"/>
+  <field name="quoted_status_id_str" type="tlongs"/>
+  <field name="quoted_status_permalink.display" type="strings"/>
+  <field name="quoted_status_permalink.expanded" type="strings"/>
+  <field name="quoted_status_permalink.url" type="strings"/>
+  <field name="reply_count" type="tlongs"/>
+  <field name="resourcename" type="strings"/>
+  <field name="retweet_count" type="tlongs"/>
+  <field name="retweeted" type="booleans"/>
+  <field name="retweeted_status.coordinates.coordinates" type="tdoubles"/>
+  <field name="retweeted_status.coordinates.type" type="strings"/>
+  <field name="retweeted_status.created_at" type="strings"/>
+  <field name="retweeted_status.display_text_range" type="tlongs"/>
+  <field name="retweeted_status.entities.hashtags.indices" type="tlongs"/>
+  <field name="retweeted_status.entities.hashtags.text" type="strings"/>
+  <field name="retweeted_status.entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.entities.media.type" type="strings"/>
+  <field name="retweeted_status.entities.media.url" type="strings"/>
+  <field name="retweeted_status.entities.urls.display_url" type="strings"/>
+  <field name="retweeted_status.entities.urls.expanded_url" type="strings"/>
+  <field name="retweeted_status.entities.urls.indices" type="tlongs"/>
+  <field name="retweeted_status.entities.urls.url" type="strings"/>
+  <field name="retweeted_status.entities.user_mentions.id" type="tlongs"/>
+  <field name="retweeted_status.entities.user_mentions.id_str" type="tlongs"/>
+  <field name="retweeted_status.entities.user_mentions.indices" type="tlongs"/>
+  <field name="retweeted_status.entities.user_mentions.name" type="strings"/>
+  <field name="retweeted_status.entities.user_mentions.screen_name" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.extended_entities.media.type" type="strings"/>
+  <field name="retweeted_status.extended_entities.media.url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.display_text_range" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.hashtags.indices" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.hashtags.text" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.additional_media_info.monetizable" type="booleans"/>
+  <field name="retweeted_status.extended_tweet.entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.source_status_id" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.source_status_id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.source_user_id" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.source_user_id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.type" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.video_info.aspect_ratio" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.video_info.duration_millis" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.video_info.variants.bitrate" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.media.video_info.variants.content_type" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.media.video_info.variants.url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.urls.display_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.urls.expanded_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.urls.indices" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.urls.url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.user_mentions.id" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.user_mentions.id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.user_mentions.indices" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.entities.user_mentions.name" type="strings"/>
+  <field name="retweeted_status.extended_tweet.entities.user_mentions.screen_name" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.additional_media_info.monetizable" type="booleans"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.source_status_id" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.source_status_id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.source_user_id" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.source_user_id_str" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.type" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.video_info.aspect_ratio" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.video_info.duration_millis" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.video_info.variants.bitrate" type="tlongs"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.video_info.variants.content_type" type="strings"/>
+  <field name="retweeted_status.extended_tweet.extended_entities.media.video_info.variants.url" type="strings"/>
+  <field name="retweeted_status.extended_tweet.full_text" type="strings"/>
+  <field name="retweeted_status.favorite_count" type="tlongs"/>
+  <field name="retweeted_status.favorited" type="booleans"/>
+  <field name="retweeted_status.filter_level" type="strings"/>
+  <field name="retweeted_status.geo.coordinates" type="tdoubles"/>
+  <field name="retweeted_status.geo.type" type="strings"/>
+  <field name="retweeted_status.id" type="tlongs"/>
+  <field name="retweeted_status.id_str" type="tlongs"/>
+  <field name="retweeted_status.in_reply_to_screen_name" type="strings"/>
+  <field name="retweeted_status.in_reply_to_status_id" type="tlongs"/>
+  <field name="retweeted_status.in_reply_to_status_id_str" type="tlongs"/>
+  <field name="retweeted_status.in_reply_to_user_id" type="tlongs"/>
+  <field name="retweeted_status.in_reply_to_user_id_str" type="tlongs"/>
+  <field name="retweeted_status.is_quote_status" type="booleans"/>
+  <field name="retweeted_status.lang" type="strings"/>
+  <field name="retweeted_status.place.bounding_box.coordinates" type="strings"/>
+  <field name="retweeted_status.place.bounding_box.type" type="strings"/>
+  <field name="retweeted_status.place.country" type="strings"/>
+  <field name="retweeted_status.place.country_code" type="strings"/>
+  <field name="retweeted_status.place.full_name" type="strings"/>
+  <field name="retweeted_status.place.id" type="strings"/>
+  <field name="retweeted_status.place.name" type="strings"/>
+  <field name="retweeted_status.place.place_type" type="strings"/>
+  <field name="retweeted_status.place.url" type="strings"/>
+  <field name="retweeted_status.possibly_sensitive" type="booleans"/>
+  <field name="retweeted_status.quote_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.created_at" type="strings"/>
+  <field name="retweeted_status.quoted_status.display_text_range" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.additional_media_info.monetizable" type="booleans"/>
+  <field name="retweeted_status.quoted_status.entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.media.type" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.media.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.urls.display_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.urls.expanded_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.urls.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.urls.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.user_mentions.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.user_mentions.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.user_mentions.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.entities.user_mentions.name" type="strings"/>
+  <field name="retweeted_status.quoted_status.entities.user_mentions.screen_name" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.additional_media_info.monetizable" type="booleans"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.type" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.video_info.aspect_ratio" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.video_info.duration_millis" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.video_info.variants.bitrate" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.video_info.variants.content_type" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_entities.media.video_info.variants.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.display_text_range" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.hashtags.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.hashtags.text" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.type" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.media.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.urls.display_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.urls.expanded_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.urls.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.urls.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.user_mentions.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.user_mentions.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.user_mentions.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.user_mentions.name" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.entities.user_mentions.screen_name" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.display_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.expanded_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.indices" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.media_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.media_url_https" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.large.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.large.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.large.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.medium.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.medium.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.medium.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.small.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.small.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.small.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.thumb.h" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.thumb.resize" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.sizes.thumb.w" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.type" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.extended_entities.media.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.extended_tweet.full_text" type="strings"/>
+  <field name="retweeted_status.quoted_status.favorite_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.favorited" type="booleans"/>
+  <field name="retweeted_status.quoted_status.filter_level" type="strings"/>
+  <field name="retweeted_status.quoted_status.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.is_quote_status" type="booleans"/>
+  <field name="retweeted_status.quoted_status.lang" type="strings"/>
+  <field name="retweeted_status.quoted_status.possibly_sensitive" type="booleans"/>
+  <field name="retweeted_status.quoted_status.quote_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.quoted_status_id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.quoted_status_id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.reply_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.retweet_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.retweeted" type="booleans"/>
+  <field name="retweeted_status.quoted_status.source" type="strings"/>
+  <field name="retweeted_status.quoted_status.text" type="strings"/>
+  <field name="retweeted_status.quoted_status.truncated" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.contributors_enabled" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.created_at" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.default_profile" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.default_profile_image" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.description" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.favourites_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.user.followers_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.user.friends_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.user.geo_enabled" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.user.id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.user.is_translator" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.lang" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.listed_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.user.location" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.name" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_background_color" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_background_image_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_background_image_url_https" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_background_tile" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.profile_banner_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_image_url" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_image_url_https" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_link_color" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_sidebar_border_color" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_sidebar_fill_color" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_text_color" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.profile_use_background_image" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.protected" type="booleans"/>
+  <field name="retweeted_status.quoted_status.user.screen_name" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.statuses_count" type="tlongs"/>
+  <field name="retweeted_status.quoted_status.user.translator_type" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.url" type="strings"/>
+  <field name="retweeted_status.quoted_status.user.verified" type="booleans"/>
+  <field name="retweeted_status.quoted_status_id" type="tlongs"/>
+  <field name="retweeted_status.quoted_status_id_str" type="tlongs"/>
+  <field name="retweeted_status.quoted_status_permalink.display" type="strings"/>
+  <field name="retweeted_status.quoted_status_permalink.expanded" type="strings"/>
+  <field name="retweeted_status.quoted_status_permalink.url" type="strings"/>
+  <field name="retweeted_status.reply_count" type="tlongs"/>
+  <field name="retweeted_status.retweet_count" type="tlongs"/>
+  <field name="retweeted_status.retweeted" type="booleans"/>
+  <field name="retweeted_status.source" type="strings"/>
+  <field name="retweeted_status.text" type="strings"/>
+  <field name="retweeted_status.truncated" type="booleans"/>
+  <field name="retweeted_status.user.contributors_enabled" type="booleans"/>
+  <field name="retweeted_status.user.created_at" type="strings"/>
+  <field name="retweeted_status.user.default_profile" type="booleans"/>
+  <field name="retweeted_status.user.default_profile_image" type="booleans"/>
+  <field name="retweeted_status.user.description" type="strings"/>
+  <field name="retweeted_status.user.favourites_count" type="tlongs"/>
+  <field name="retweeted_status.user.followers_count" type="tlongs"/>
+  <field name="retweeted_status.user.friends_count" type="tlongs"/>
+  <field name="retweeted_status.user.geo_enabled" type="booleans"/>
+  <field name="retweeted_status.user.id" type="tlongs"/>
+  <field name="retweeted_status.user.id_str" type="tlongs"/>
+  <field name="retweeted_status.user.is_translator" type="booleans"/>
+  <field name="retweeted_status.user.lang" type="strings"/>
+  <field name="retweeted_status.user.listed_count" type="tlongs"/>
+  <field name="retweeted_status.user.location" type="strings"/>
+  <field name="retweeted_status.user.name" type="strings"/>
+  <field name="retweeted_status.user.profile_background_color" type="strings"/>
+  <field name="retweeted_status.user.profile_background_image_url" type="strings"/>
+  <field name="retweeted_status.user.profile_background_image_url_https" type="strings"/>
+  <field name="retweeted_status.user.profile_background_tile" type="booleans"/>
+  <field name="retweeted_status.user.profile_banner_url" type="strings"/>
+  <field name="retweeted_status.user.profile_image_url" type="strings"/>
+  <field name="retweeted_status.user.profile_image_url_https" type="strings"/>
+  <field name="retweeted_status.user.profile_link_color" type="strings"/>
+  <field name="retweeted_status.user.profile_sidebar_border_color" type="strings"/>
+  <field name="retweeted_status.user.profile_sidebar_fill_color" type="strings"/>
+  <field name="retweeted_status.user.profile_text_color" type="strings"/>
+  <field name="retweeted_status.user.profile_use_background_image" type="booleans"/>
+  <field name="retweeted_status.user.protected" type="booleans"/>
+  <field name="retweeted_status.user.screen_name" type="strings"/>
+  <field name="retweeted_status.user.statuses_count" type="tlongs"/>
+  <field name="retweeted_status.user.translator_type" type="strings"/>
+  <field name="retweeted_status.user.url" type="strings"/>
+  <field name="retweeted_status.user.verified" type="booleans"/>
+  <field name="source" type="strings"/>
+  <field name="stream_content_type" type="strings"/>
+  <field name="stream_size" type="tlongs"/>
+  <field name="text" type="strings"/>
+  <field name="text_en" type="text_en" stored="true" indexed="true"/>
+  <field name="text_es" type="text_es" stored="true" indexed="true"/>
+  <field name="text_fr" type="text_fr" stored="true" indexed="true"/>
+  <field name="text_hi" type="text_hi" stored="true" indexed="true"/>
+  <field name="text_th" type="text_th" stored="true" indexed="true"/>
+  <field name="timestamp_ms" type="tlongs"/>
+  <field name="truncated" type="booleans"/>
+  <field name="tweet_Urls" type="strings" multiValued="true" indexed="true" stored="true"/>
+  <field name="tweet_lang" type="string" indexed="true" stored="true"/>
+  <field name="urls" type="string" indexed="true" stored="true"/>
+  <field name="user.contributors_enabled" type="booleans"/>
+  <field name="user.created_at" type="strings"/>
+  <field name="user.default_profile" type="booleans"/>
+  <field name="user.default_profile_image" type="booleans"/>
+  <field name="user.description" type="strings"/>
+  <field name="user.entities.url.urls.display_url" type="strings"/>
+  <field name="user.entities.url.urls.expanded_url" type="strings"/>
+  <field name="user.entities.url.urls.indices" type="tlongs"/>
+  <field name="user.entities.url.urls.url" type="strings"/>
+  <field name="user.favourites_count" type="tlongs"/>
+  <field name="user.follow_request_sent" type="booleans"/>
+  <field name="user.followers_count" type="tlongs"/>
+  <field name="user.following" type="booleans"/>
+  <field name="user.friends_count" type="tlongs"/>
+  <field name="user.geo_enabled" type="booleans"/>
+  <field name="user.has_extended_profile" type="booleans"/>
+  <field name="user.id" type="tlongs"/>
+  <field name="user.id_str" type="tlongs"/>
+  <field name="user.is_translation_enabled" type="booleans"/>
+  <field name="user.is_translator" type="booleans"/>
+  <field name="user.lang" type="strings"/>
+  <field name="user.listed_count" type="tlongs"/>
+  <field name="user.location" type="strings"/>
+  <field name="user.name" type="strings"/>
+  <field name="user.notifications" type="booleans"/>
+  <field name="user.profile_background_color" type="strings"/>
+  <field name="user.profile_background_image_url" type="strings"/>
+  <field name="user.profile_background_image_url_https" type="strings"/>
+  <field name="user.profile_background_tile" type="booleans"/>
+  <field name="user.profile_banner_url" type="strings"/>
+  <field name="user.profile_image_url" type="strings"/>
+  <field name="user.profile_image_url_https" type="strings"/>
+  <field name="user.profile_link_color" type="strings"/>
+  <field name="user.profile_sidebar_border_color" type="strings"/>
+  <field name="user.profile_sidebar_fill_color" type="strings"/>
+  <field name="user.profile_text_color" type="strings"/>
+  <field name="user.profile_use_background_image" type="booleans"/>
+  <field name="user.protected" type="booleans"/>
+  <field name="user.screen_name" type="strings"/>
+  <field name="user.statuses_count" type="tlongs"/>
+  <field name="user.translator_type" type="strings"/>
+  <field name="user.url" type="strings"/>
+  <field name="user.verified" type="booleans"/>
+  <field name="x_parsed_by" type="strings"/>
+  <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight" indexed="true" stored="true"/>
+  <dynamicField name="*_descendent_path" type="descendent_path" indexed="true" stored="true"/>
+  <dynamicField name="*_ancestor_path" type="ancestor_path" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_en_split" type="text_en_splitting" indexed="true" stored="true"/>
+  <dynamicField name="ignored_*" type="ignored" multiValued="true"/>
+  <dynamicField name="*_txt_rev" type="text_general_rev" indexed="true" stored="true"/>
+  <dynamicField name="*_phon_en" type="phonetic_en" indexed="true" stored="true"/>
+  <dynamicField name="*_s_lower" type="lowercase" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_cjk" type="text_cjk" indexed="true" stored="true"/>
+  <dynamicField name="random_*" type="random"/>
+  <dynamicField name="*_txt_en" type="text_en" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ar" type="text_ar" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_bg" type="text_bg" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ca" type="text_ca" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_cz" type="text_cz" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_da" type="text_da" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_de" type="text_de" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_el" type="text_el" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_es" type="text_es" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_eu" type="text_eu" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_fa" type="text_fa" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_fi" type="text_fi" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_fr" type="text_fr" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ga" type="text_ga" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_gl" type="text_gl" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_hi" type="text_hi" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_hu" type="text_hu" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_hy" type="text_hy" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_id" type="text_id" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_it" type="text_it" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ja" type="text_ja" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_lv" type="text_lv" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_nl" type="text_nl" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_no" type="text_no" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_pt" type="text_pt" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ro" type="text_ro" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ru" type="text_ru" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_sv" type="text_sv" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_th" type="text_th" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_tr" type="text_tr" indexed="true" stored="true"/>
+  <dynamicField name="*_point" type="point" indexed="true" stored="true"/>
+  <dynamicField name="tweet_*" type="string" indexed="true" stored="true"/>
+  <dynamicField name="*_srpt" type="location_rpt" indexed="true" stored="true"/>
+  <dynamicField name="*_pdts" type="pdates" indexed="true" stored="true"/>
+  <dynamicField name="*_tdts" type="tdates" indexed="true" stored="true"/>
+  <dynamicField name="attr_*" type="text_general" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_txt" type="text_general" indexed="true" stored="true"/>
+  <dynamicField name="*_dts" type="date" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_pis" type="pints" indexed="true" stored="true"/>
+  <dynamicField name="*_pls" type="plongs" indexed="true" stored="true"/>
+  <dynamicField name="*_pfs" type="pfloats" indexed="true" stored="true"/>
+  <dynamicField name="*_pds" type="pdoubles" indexed="true" stored="true"/>
+  <dynamicField name="*_pdt" type="pdate" indexed="true" stored="true"/>
+  <dynamicField name="*_tis" type="tints" indexed="true" stored="true"/>
+  <dynamicField name="*_tls" type="tlongs" indexed="true" stored="true"/>
+  <dynamicField name="*_tfs" type="tfloats" indexed="true" stored="true"/>
+  <dynamicField name="*_tds" type="tdoubles" indexed="true" stored="true"/>
+  <dynamicField name="*_tdt" type="tdate" indexed="true" stored="true"/>
+  <dynamicField name="*_dpf" type="delimited_payloads_float" indexed="true" stored="true"/>
+  <dynamicField name="*_dpi" type="delimited_payloads_int" indexed="true" stored="true"/>
+  <dynamicField name="*_dps" type="delimited_payloads_string" indexed="true" stored="true"/>
+  <dynamicField name="*_is" type="ints" indexed="true" stored="true"/>
+  <dynamicField name="*_ss" type="strings" indexed="true" stored="true"/>
+  <dynamicField name="*_ls" type="longs" indexed="true" stored="true"/>
+  <dynamicField name="*_bs" type="booleans" indexed="true" stored="true"/>
+  <dynamicField name="*_fs" type="floats" indexed="true" stored="true"/>
+  <dynamicField name="*_ds" type="doubles" indexed="true" stored="true"/>
+  <dynamicField name="*_dt" type="date" indexed="true" stored="true"/>
+  <dynamicField name="*_pi" type="pint" indexed="true" stored="true"/>
+  <dynamicField name="*_pl" type="plong" indexed="true" stored="true"/>
+  <dynamicField name="*_pf" type="pfloat" indexed="true" stored="true"/>
+  <dynamicField name="*_pd" type="pdouble" indexed="true" stored="true"/>
+  <dynamicField name="*_ti" type="tint" indexed="true" stored="true"/>
+  <dynamicField name="*_tl" type="tlong" indexed="true" stored="true"/>
+  <dynamicField name="*_tf" type="tfloat" indexed="true" stored="true"/>
+  <dynamicField name="*_td" type="tdouble" indexed="true" stored="true"/>
+  <dynamicField name="*_ws" type="text_ws" indexed="true" stored="true"/>
+  <dynamicField name="*_i" type="int" indexed="true" stored="true"/>
+  <dynamicField name="*_s" type="string" indexed="true" stored="true"/>
+  <dynamicField name="*_l" type="long" indexed="true" stored="true"/>
+  <dynamicField name="*_t" type="text_general" indexed="true" stored="true"/>
+  <dynamicField name="*_b" type="boolean" indexed="true" stored="true"/>
+  <dynamicField name="*_f" type="float" indexed="true" stored="true"/>
+  <dynamicField name="*_d" type="double" indexed="true" stored="true"/>
+  <dynamicField name="*_p" type="location" indexed="true" stored="true"/>
+  <dynamicField name="*_c" type="currency" indexed="true" stored="true"/>
+  <copyField source="entities.media.display_url" dest="tweet_Urls"/>
+  <copyField source="entities.urls.url" dest="urls"/>
+  <copyField source="lang" dest="tweet_lang"/>
+  <copyField source="*" dest="_text_"/>
+  <copyField source="entities.media.display_url" dest="tweet_url"/>
+</schema>
